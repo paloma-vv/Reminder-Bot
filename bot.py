@@ -8,7 +8,9 @@ import discord
 import asyncio
 import datetime
 from keep_alive import keep_alive
-from pprint import pprint
+from pprint import print
+
+keep_alive()
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
@@ -90,7 +92,5 @@ async def main():
     await client.start(os.environ.get('token'))
 
 asyncio.run(main())
-
-keep_alive()
         
 client.run(os.environ.get('token'))
