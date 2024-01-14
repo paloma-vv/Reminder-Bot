@@ -46,9 +46,9 @@ async def on_ready():
 
 async def check_countdowns():
     channel = countdowns["something"][5]
-    await channel.send("Im here", silent=True)
     #example command to add a countdown from user input in discord: $add math monday 09:00 10:00 1 2020-12-03
-    # while True:
+    while True:
+        await channel.send("Im here", silent=True)
     #     print(countdowns)
     #     now = datetime.datetime.now()
     #     print(now.strftime("%Y-%m-%d %H:%M"))
@@ -85,7 +85,7 @@ async def check_countdowns():
 
 
 
-    #     await asyncio.sleep(60)
+        await asyncio.sleep(10)
 
         
 
