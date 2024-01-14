@@ -45,8 +45,8 @@ async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
 async def check_countdowns():
-    countdowns["debug"] = "TEST"
-    
+    channel = countdowns["something"][5]
+    await channel.send("Im here", silent=True)
     #example command to add a countdown from user input in discord: $add math monday 09:00 10:00 1 2020-12-03
     # while True:
     #     print(countdowns)
