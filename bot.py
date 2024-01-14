@@ -37,7 +37,7 @@ async def on_message(message):
         countdowns[name] = [day, time_start, time_end, interval, last_day, message.channel]
         await message.channel.send("Added " + name + " to countdowns.", silent=True)
     if msg.startswith("$test"):
-        await message.channel.send(countdowns["debug"])
+        await check_countdowns()
     
 
 @client.event
@@ -90,7 +90,7 @@ async def check_countdowns():
         
 
 async def main():
-    asyncio.create_task(check_countdowns())
+    # asyncio.create_task(check_countdowns())
     await client.start(os.environ.get('token'))
 
 asyncio.run(main())
