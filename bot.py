@@ -6,6 +6,7 @@ import os
 countdowns = {}
 import discord
 import asyncio
+import pytz
 import datetime
 from keep_alive import keep_alive
 keep_alive()
@@ -36,8 +37,8 @@ async def on_message(message):
         last_day = contents[6]
         countdowns[name] = [day, time_start, time_end, interval, last_day, message.channel]
         await message.channel.send("Added " + name + " to countdowns.", silent=True)
-    if msg.startswith("$test"):
-        await check_countdowns()
+    # if msg.startswith("$test"):
+    #     await check_countdowns()
     
 
 @client.event
@@ -45,12 +46,13 @@ async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
 async def check_countdowns():
-    channel1 = countdowns["something"][5]
+    # channel1 = countdowns["something"][5]
     #example command to add a countdown from user input in discord: $add math monday 09:00 10:00 1 2020-12-03
     while True:
-        await channel1.send("IM here", silent=True)
+        # await channel1.send("IM here", silent=True)
         print(countdowns)
-        now = datetime.datetime.now()
+        eastern = pytz.timezone('US/Eastern')
+        now = datetime.datetime.now(eastern)
         print(now.strftime("%Y-%m-%d %H:%M"))
  
         for name in countdowns:
@@ -85,12 +87,12 @@ async def check_countdowns():
 
 
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(60)
 
         
 
 async def main():
-    # asyncio.create_task(check_countdowns())
+    asyncio.create_task(check_countdowns())
     await client.start(os.environ.get('token'))
 
 asyncio.run(main())
