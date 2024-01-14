@@ -8,8 +8,6 @@ import discord
 import asyncio
 import datetime
 from keep_alive import keep_alive
-from pprint import print
-
 keep_alive()
 
 intents = discord.Intents.all()
@@ -50,7 +48,7 @@ async def check_countdowns():
     while True:
         now = datetime.datetime.now()
         print(now.strftime("%Y-%m-%d %H:%M"))
-        pprint(countdowns)
+ 
         for name in countdowns:
             day = countdowns[name][0]
             time_start = countdowns[name][1]
