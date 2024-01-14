@@ -65,9 +65,9 @@ async def check_countdowns():
             length_of_class = datetime.datetime.strptime(time_end, "%H:%M") - datetime.datetime.strptime(time_start, "%H:%M")
 
             if day == now.strftime("%A").lower() and now.strftime("%H:%M") == time_start:
-                await channel.send("Class " + name + " has started.", silent=True)
+                await channel.send(name + " has started.", silent=True)
             if day == now.strftime("%A").lower() and now.strftime("%H:%M") == time_end:
-                await channel.send("Class " + name + " has ended.", silent=True)
+                await channel.send(name + " has ended.", silent=True)
                 
             # if current time is between start and end time
             if day == now.strftime("%A").lower() and now.strftime("%H:%M") > datetime.datetime.strptime(time_start, "%H:%M").strftime("%H:%M") and now.strftime("%H:%M") < datetime.datetime.strptime(time_end, "%H:%M").strftime("%H:%M"):
@@ -75,7 +75,7 @@ async def check_countdowns():
                 time_left_in_class_datetime = datetime.datetime.strptime(time_end, "%H:%M") - datetime.datetime.strptime(now.strftime("%H:%M"), "%H:%M")
                 time_left_in_class = time_left_in_class_datetime.seconds // 60
                 if time_left_in_class % interval == 0:
-                    await channel.send("Class " + name + " has " + str(time_left_in_class) + " minutes left.", silent=True)
+                    await channel.send(name + " has " + str(time_left_in_class) + " minutes left.", silent=True)
                     
                 
 
@@ -83,7 +83,7 @@ async def check_countdowns():
             # if it is the day after the last day, delete the countdown
             if now.strftime("%Y-%m-%d") == last_day:
                 del countdowns[name]
-                await channel.send("Class " + name + " has ended.", silent=True)
+                await channel.send(name + " has ended.", silent=True)
 
 
 
