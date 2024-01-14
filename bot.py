@@ -36,7 +36,8 @@ async def on_message(message):
         last_day = contents[6]
         countdowns[name] = [day, time_start, time_end, interval, last_day, message.channel]
         await message.channel.send("Added " + name + " to countdowns.", silent=True)
-
+    if msg.startswith("$test"):
+        await message.channel.send(countdowns)
     
 
 @client.event
