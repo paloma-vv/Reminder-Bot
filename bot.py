@@ -46,7 +46,7 @@ async def on_ready():
 async def check_countdowns():
     #example command to add a countdown from user input in discord: $add math monday 09:00 10:00 1 2020-12-03
     while True:
-        pprint(countdowns)
+        print(countdowns)
         now = datetime.datetime.now()
         print(now.strftime("%Y-%m-%d %H:%M"))
  
